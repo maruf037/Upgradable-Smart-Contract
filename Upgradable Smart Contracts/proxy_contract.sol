@@ -26,5 +26,15 @@ contract myProxy {
         require(isSuccessful);
     }
 
-    
+    function upgradeStorage(address _newStorage) public onlyOwner {
+        require(storageAddress != _newStorage);
+        storageAddress = _newStorage;
+        listStorage.push(_newStorage);
+    }
+
+    function upgradeUpgradable(address _newUpgradable) public onlyOwner {
+        require(upgradableAddress != _newUpgradable);
+        upgradableAddress = _newUpgradable;
+        listUpgradable.push(_newUpgradable);
+    }
 }
